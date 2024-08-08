@@ -1,39 +1,43 @@
 package com.sherbek_mamasodiqov.mytaxi
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
+import com.sherbek_mamasodiqov.mytaxi.data.LocationRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class MapViewModel : ViewModel() {
+class MapViewModel(private val locationRepository: LocationRepository) : ViewModel() {
     private val _userLocation = MutableStateFlow<Point?>(null)
     val userLocation: StateFlow<Point?> get() = _userLocation
-
-    private val _followUser = MutableStateFlow(true)
-    val followUser: StateFlow<Boolean> get() = _followUser
 
     private val _cameraState = MutableStateFlow(CameraOptions.Builder().zoom(14.0).build())
     val cameraState: StateFlow<CameraOptions> get() = _cameraState
 
-    fun setUserLocation(location: Point) {
-        _userLocation.value = location
-        if (_followUser.value) {
-            updateCamera(location)
+    init {
+        viewModelScope.launch {
+            fetchLatestLocation()
+        }
+    }
+
+    private fun fetchLatestLocation() {
+        viewModelScope.launch {
+            locationRepository.getLatestLocation().collect { locationEntity ->
+                locationEntity?.let {
+                    val point = Point.fromLngLat(it.longitude, it.latitude)
+                    _userLocation.value = point
+                    updateCamera(point)
+                }
+            }
         }
     }
 
     fun setFollowUser(follow: Boolean) {
-        _followUser.value = follow
-        if (_followUser.value) {
-            _userLocation.value?.let { updateCamera(it) }
+        if (follow) {
+            _userLocation.value?.let { updateCamera(center = it) }
         }
     }
 
@@ -41,8 +45,7 @@ class MapViewModel : ViewModel() {
         _cameraState.update { currentState ->
             val newZoom = (currentState.zoom ?: 14.0) + 1.0
             CameraOptions.Builder()
-                .center(currentState.center)
-                .zoom(newZoom.coerceAtMost(22.0))
+                .zoom(newZoom.coerceIn(0.0, 22.0)) // Adjust zoom level
                 .bearing(currentState.bearing)
                 .pitch(currentState.pitch)
                 .build()
@@ -53,8 +56,7 @@ class MapViewModel : ViewModel() {
         _cameraState.update { currentState ->
             val newZoom = (currentState.zoom ?: 14.0) - 1.0
             CameraOptions.Builder()
-                .center(currentState.center)
-                .zoom(newZoom.coerceAtLeast(0.0))
+                .zoom(newZoom.coerceIn(0.0, 22.0)) // Adjust zoom level
                 .bearing(currentState.bearing)
                 .pitch(currentState.pitch)
                 .build()
