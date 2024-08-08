@@ -3,6 +3,7 @@ Thank you to MyTaxi for the opportunity to work on this task. It has been a valu
 
 Task Review
 Challenges
+
 Accuracy and Performance of Location Updates
 Challenge: Balancing location accuracy with performance and battery use.
 Solution: Optimized update intervals and used FusedLocationProviderClient to manage accuracy and battery life.
@@ -21,6 +22,7 @@ Solution: Applied efficient update methods and Mapbox SDK features to keep the m
 
 
 Experiences Gained
+
 Enhanced Knowledge of Location Services
 Description: Learned about accurate location tracking and battery management using FusedLocationProviderClient.
 Skills: Location accuracy, battery optimization, and permission handling.
