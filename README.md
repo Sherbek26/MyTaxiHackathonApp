@@ -40,6 +40,8 @@ Pictures
 ![image](https://github.com/user-attachments/assets/82f98f46-977d-49ae-a9ca-61a03b50d9e4)
 ![image](https://github.com/user-attachments/assets/a94aa4dd-26ec-4d42-b0e4-ac2b313edb47)
 ![image](https://github.com/user-attachments/assets/8545d8b6-f554-4856-89c3-f51227481d77)
-![image](https://github.com/user-attachments/assets/cf97b7d9-e038-4458-907a-3334332e40d1)
     
 Video
+
+https://github.com/user-attachments/assets/e8de54c0-f5a0-490a-b84a-bde126c3911c
+
