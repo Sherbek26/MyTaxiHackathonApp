@@ -14,12 +14,22 @@ This project involves creating an application for continuous location tracking a
 - **Room**: For database management and data integrity.
 - **Mapbox SDK**: For integrating and updating map views with real-time location data.
 
+# Project Screenshots
 
-## Pictures
+## Screenshots
 
-![image](https://github.com/user-attachments/assets/82f98f46-977d-49ae-a9ca-61a03b50d9e4)
-![image](https://github.com/user-attachments/assets/a94aa4dd-26ec-4d42-b0e4-ac2b313edb47)
-![image](https://github.com/user-attachments/assets/8545d8b6-f554-4856-89c3-f51227481d77)
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+  <div style="flex: 1 1 calc(50% - 10px); box-sizing: border-box;">
+    <img src="https://github.com/user-attachments/assets/82f98f46-977d-49ae-a9ca-61a03b50d9e4" alt="Screenshot 1" style="width: 100%; height: auto;">
+  </div>
+  <div style="flex: 1 1 calc(50% - 10px); box-sizing: border-box;">
+    <img src="https://github.com/user-attachments/assets/a94aa4dd-26ec-4d42-b0e4-ac2b313edb47" alt="Screenshot 2" style="width: 100%; height: auto;">
+  </div>
+  <div style="flex: 1 1 calc(50% - 10px); box-sizing: border-box;">
+    <img src="https://github.com/user-attachments/assets/8545d8b6-f554-4856-89c3-f51227481d77" alt="Screenshot 3" style="width: 100%; height: auto;">
+  </div>
+</div>
+
     
 ## Video
 
