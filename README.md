@@ -28,4 +28,4 @@ https://github.com/user-attachments/assets/e8de54c0-f5a0-490a-b84a-bde126c3911c
 ## Installation and Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/yourproject.git
+   git clone https://github.com/Sherbek26/MyTaxiHackathonApp.git
